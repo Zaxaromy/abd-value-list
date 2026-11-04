@@ -193,6 +193,7 @@ var CHARACTERS=[
 ["Rookie Hero","Common",40,"Low","up"]
 */
 ];
+CHARACTERS = CHARACTERS.filter(function(c){ return Array.isArray(c); });
 /* Rarity order, pill background and text colour. Edit colours here. */
 var RARITIES=[["Exclusive","#1b1740","#ffd23f"],["Limited","#9f1e2d","#ffffff"],["Divine","#e8d68a","#3f381d"],["Void","#734dbb","#ffffff"],["Secret","#d6336f","#ffffff"],["Godly","#5cb8a6","#08231d"],["Mythic","#da5123","#ffffff"],["Legendary","#d8aa3a","#2b2108"],["Epic","#8f4fba","#ffffff"],["Rare","#3c77ac","#ffffff"],["Common","#6db379","#0f2a16"]];
 var RMAP={};RARITIES.forEach(function(r){RMAP[r[0].toLowerCase()]=r});
