@@ -28,11 +28,7 @@ main{max-width:1100px;margin:auto;padding:32px 20px 60px}
 .hero{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center;padding:20px 0 36px}
 .hero h1{font-size:clamp(2.4rem,6vw,4.4rem);font-weight:800}
 .hero p{color:var(--mute);font-size:1.1rem;max-width:46ch}
-.court{aspect-ratio:1;border:2px solid var(--ink);border-radius:28px;background:repeating-linear-gradient(115deg,var(--acc2) 0 14px,color-mix(in srgb,var(--acc2) 82%,#000) 14px 28px);position:relative;overflow:hidden;box-shadow:8px 8px 0 var(--ink)}
-.court b{position:absolute;left:50%;top:50%;width:34%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0 10%,var(--glow) 11% 55%,var(--acc) 56%);border:3px solid var(--ink);transform:translate(-50%,-50%);animation:bob 2.4s ease-in-out infinite}
-@keyframes bob{50%{transform:translate(-50%,-62%)}}
-@media (prefers-reduced-motion:reduce){.court b{animation:none}}
-.btn{display:inline-block;padding:10px 18px;border:2px solid var(--ink);border-radius:12px;background:var(--acc);color:#fff;font-weight:700;text-decoration:none;cursor:pointer;font:inherit;font-weight:700;box-shadow:3px 3px 0 var(--ink)}
+.btn{display:inline-block;padding:10px 18px;border:2px solid var(--ink);border-radius:12px;background:var(--acc);color:#fff;text-decoration:none;cursor:pointer;font:inherit;font-weight:700;box-shadow:3px 3px 0 var(--ink)}
 .btn.alt{background:var(--surf);color:var(--ink)}
 .btn:focus-visible,input:focus-visible,select:focus-visible,nav a:focus-visible{outline:3px solid var(--acc2);outline-offset:2px}
 .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
@@ -50,8 +46,8 @@ th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line)}
 th{background:var(--ink);color:var(--surf);font-weight:700}
 .wrap{overflow-x:auto;border-radius:12px}
 .pill{display:inline-block;padding:2px 10px;border-radius:99px;font-size:.8rem;font-weight:700;border:1.5px solid var(--ink)}
-.rare-Mythic{background:var(--acc);color:#fff}.rare-Legendary{background:var(--glow);color:#1b1740}.rare-Epic{background:var(--acc2);color:#fff}.rare-Rare{background:var(--surf)}
-.up{color:#14a36a;font-weight:700}.down{color:#e03a3a;font-weight:700}
+.up{color:#14a36a;font-weight:700}.down{color:#e03a3a;font-weight:700}.stable{color:#c99700;font-weight:700}
+@media (prefers-color-scheme:dark){.stable{color:#ffd23f}}
 .tier{display:flex;border:2px solid var(--ink);border-radius:14px;overflow:hidden;margin-bottom:12px;background:var(--surf)}
 .tier>strong{flex:0 0 72px;display:grid;place-items:center;font:800 2rem "Bricolage Grotesque",sans-serif;color:#1b1740}
 .tier div{display:flex;flex-wrap:wrap;gap:8px;padding:12px}
@@ -68,11 +64,10 @@ th{background:var(--ink);color:var(--surf);font-weight:700}
 .fig .thumb{width:104px;height:104px;margin-bottom:4px}
 .fig figcaption{font-size:.85rem;font-weight:500}
 .icon{width:56px;height:56px;border-radius:12px;border:2px solid var(--ink);object-fit:cover;display:block;margin-bottom:12px}
-.banner{width:100%;aspect-ratio:2/1;object-fit:cover;border:2px solid var(--ink);border-radius:10px;display:block;margin-bottom:12px}
 .heroimg{width:100%;aspect-ratio:1;object-fit:cover;border:2px solid var(--ink);border-radius:28px;box-shadow:8px 8px 0 var(--ink);display:block}
 @media (max-width:760px){.heroimg{max-width:320px}}
 footer{border-top:2px solid var(--ink);padding:24px 20px;text-align:center;color:var(--mute);font-size:.9rem}
-@media (max-width:760px){.hero{grid-template-columns:1fr}.form{grid-template-columns:1fr}.court{max-width:320px}.bar{gap:8px;padding:8px 12px}.logo span{display:none}}
+@media (max-width:760px){.hero{grid-template-columns:1fr}.form{grid-template-columns:1fr}.bar{gap:8px;padding:8px 12px}.logo span{display:none}}
 </style>
 </head>
 <body>
@@ -145,25 +140,27 @@ footer{border-top:2px solid var(--ink);padding:24px 20px;text-align:center;color
 <div class="card"><h3>Controls</h3><p>Move, hit and use your ability with the on-screen or keyboard bindings. Time your hit as the ball nears you for the strongest return.</p></div>
 <div class="card"><h3>Getting characters</h3><p>Unlock characters through spins, events and trading with other players.</p></div>
 <div class="card"><h3>Traits</h3><p>Traits are rolled bonuses that change how a character plays. See Best Traits for the top picks.</p></div>
-<div class="card"><h3>Trading safely</h3><p>Only trade in the game's official trade menu. Never share your account details.</p></div>
+<div class="card"><h3>Trading safely</h3><p>Only trade in the game’s official trade menu. Never share your account details.</p></div>
 <div class="card"><h3>Tips for beginners</h3><p>Learn one character first, practise your timing, and check values before accepting a trade.</p></div>
 </div>
 </section>
 </main>
-<footer>Independent fan project. Not affiliated with the game's developers.</footer>
+<footer>Independent fan project. Not affiliated with the game’s developers.</footer>
 
 <script>
 /* ===== CHARACTER LIST =====
-   Each character is one line:  ["Name","Rarity",value,"Demand","up"],
+   Each character is one line:  ["Name","Rarity",value,"Demand","up","image"],
+   The image (last item) is optional. Paste a data: image address there, e.g. "data:image/png;base64,iVBOR..."
+   (published pages can only show embedded images, not links to other websites).
+   Write values as plain numbers with no comma (40000, not 40,000).
    Rarity: Exclusive, Limited, Divine, Void, Secret, Godly, Mythic, Legendary, Epic, Rare or Common.
-   Demand: "High", "Medium" or "Low".  Trend: "up" or "down".
-   The Values page shows characters in the SAME ORDER as this list, so to add one,
-   copy a line and paste it wherever you want it (e.g. right under another Legendary). */
+   Demand: "High", "Medium" or "Low".  Trend: "up", "stable" or "down".
+   The Values page shows characters in the SAME ORDER as this list. */
 var CHARACTERS=[
 /* Exclusive */
-["Tozi","Exclusive",40,000,"High","up"],
-["Kaniko Kakuja","Exclusive",20,000,"High","up"],
-["Eskanor","Exclusive",19,000,"High","up"],
+["Tozi","Exclusive",40000,"High","up"],
+["Kaniko Kakuja","Exclusive",20000,"High","up"],
+["Eskanor","Exclusive",19000,"High","up"],
 /* Limited */
 ["Yuto","Limited",1600,"High","up"],
 ["Mahyto","Limited",1600,"High","up"],
@@ -171,7 +168,7 @@ var CHARACTERS=[
 ["Madoro","Limited",1600,"High","up"],
 ["Grimjo","Limited",1600,"High","up"],
 ["Kenjako","Limited",1600,"High","up"],
-["Muzon ","Limited",1600,"High","up"],
+["Muzon","Limited",1600,"High","up"],
 ["Hakary","Limited",1600,"High","up"],
 ["Daveed","Limited",1600,"High","up"],
 ["Neferpito","Limited",1600,"High","up"],
@@ -179,33 +176,27 @@ var CHARACTERS=[
 ["Loofy Gear 5","Divine",1300,"Medium","up"],
 ["Guko Ultra Instinct","Divine",1300,"Medium","up"],
 ["Nurato Six Paths","Divine",1300,"Medium","up"],
-["Ichiru Mugetsu","Divine",1300,"Medium","up"],
-/* Void
-["Void Example","Void",1100,"Medium","down"],
-Secret
+["Ichiru Mugetsu","Divine",1300,"Medium","up"]
+/* Examples for other rarities (move above the closing bracket to use):
+["Void Example","Void",1100,"Medium","stable"],
 ["Secret Example","Secret",1050,"Medium","up"],
-Godly
 ["Godly Example","Godly",1000,"High","up"],
-Mythic
 ["Shadow Striker","Mythic",950,"High","up"],
 ["Flame Ace","Mythic",820,"High","up"],
-Legendary
 ["Storm Rally","Legendary",610,"Medium","down"],
 ["Blade Server","Legendary",540,"High","up"],
 ["Frost Guard","Legendary",470,"Medium","up"],
-Epic
 ["Thunder Pitch","Epic",320,"Medium","down"],
 ["Wind Runner","Epic",260,"Low","down"],
 ["Iron Wall","Epic",210,"Medium","up"],
-Rare
 ["Spark Kid","Rare",90,"Low","down"],
-Common
 ["Rookie Hero","Common",40,"Low","up"]
 */
 ];
 /* Rarity order, pill background and text colour. Edit colours here. */
 var RARITIES=[["Exclusive","#1b1740","#ffd23f"],["Limited","#9f1e2d","#ffffff"],["Divine","#e8d68a","#3f381d"],["Void","#734dbb","#ffffff"],["Secret","#d6336f","#ffffff"],["Godly","#5cb8a6","#08231d"],["Mythic","#da5123","#ffffff"],["Legendary","#d8aa3a","#2b2108"],["Epic","#8f4fba","#ffffff"],["Rare","#3c77ac","#ffffff"],["Common","#6db379","#0f2a16"]];
 var RMAP={};RARITIES.forEach(function(r){RMAP[r[0].toLowerCase()]=r});
+function $(i){return document.getElementById(i)}
 RARITIES.forEach(function(r){var o=document.createElement("option");o.textContent=r[0];o.value=r[0];$("vr").appendChild(o)});
 var TIERS={S:["Shadow Striker","Flame Ace"],A:["Storm Rally","Blade Server","Frost Guard"],B:["Thunder Pitch","Iron Wall","Wind Runner"],C:["Spark Kid"],D:["Rookie Hero"]};
 var TCOL={S:"#ff4f7b",A:"#ff9f43",B:"#ffd23f",C:"#7bd88f",D:"#8fb8ff"};
@@ -213,18 +204,18 @@ var TRAITS=[["Rally Boost","Raises hit power the longer a rally lasts."],["Quick
 var ads=[{n:"KaiPlays",h:"Storm Rally",w:"Blade Server"},{n:"MiraX",h:"Spark Kid + Wind Runner",w:"Frost Guard"}];
 /* IMAGE REPLACEMENT: put a path or URL for any key below, e.g.
    IMAGES["Shadow Striker"]="images/shadow-striker.png"; IMAGES.hero="images/hero.png";
-   Keys: hero, each character name, "trait:Trait Name", "card:Card Title". Empty = placeholder. */
+   Keys: hero, each character name, "trait:Trait Name". Empty = placeholder. */
 var IMAGES={};
-function $(i){return document.getElementById(i)}
-function ph(label,wide){var t=label.length>24?label.slice(0,23)+"…":label;var s=wide?"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'><rect width='400' height='200' fill='#d9d4f7'/><circle cx='300' cy='60' r='22' fill='#a79ee6'/><path d='M0 170l110-80 80 60 70-45 140 85v10H0z' fill='#a79ee6'/><text x='200' y='188' font-family='sans-serif' font-size='14' text-anchor='middle' fill='#4a4287'>"+esc(t)+"</text></svg>":"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><rect width='200' height='200' fill='#d9d4f7'/><circle cx='100' cy='72' r='30' fill='#a79ee6'/><path d='M40 160c0-34 27-52 60-52s60 18 60 52z' fill='#a79ee6'/><text x='100' y='186' font-family='sans-serif' font-size='13' text-anchor='middle' fill='#4a4287'>"+esc(t)+"</text></svg>";return "data:image/svg+xml,"+encodeURIComponent(s)}
-function im(key,label,cls,wide){return "<img class='"+cls+"' src='"+(IMAGES[key]||ph(label,wide))+"' alt='"+esc(label)+"' loading='lazy'>"}
+CHARACTERS.forEach(function(c){if(c[5])IMAGES[c[0]]=c[5]});
 function esc(s){var d=document.createElement("div");d.textContent=s;return d.innerHTML}
+function ph(label){var t=label.length>24?label.slice(0,23)+"…":label;var s="<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><rect width='200' height='200' fill='#d9d4f7'/><circle cx='100' cy='72' r='30' fill='#a79ee6'/><path d='M40 160c0-34 27-52 60-52s60 18 60 52z' fill='#a79ee6'/><text x='100' y='186' font-family='sans-serif' font-size='13' text-anchor='middle' fill='#4a4287'>"+esc(t)+"</text></svg>";return "data:image/svg+xml,"+encodeURIComponent(s)}
+function im(key,label,cls){return "<img class='"+cls+"' src='"+(IMAGES[key]||ph(label))+"' alt='"+esc(label)+"' loading='lazy'>"}
 function renderValues(){
  var q=$("vq").value.toLowerCase(),r=$("vr").value.toLowerCase(),s=$("vs").value;
  var l=CHARACTERS.filter(function(c){return c[0].toLowerCase().indexOf(q)>-1&&(!r||String(c[1]).toLowerCase()===r)});
  if(s==="n")l.sort(function(a,b){return a[0].localeCompare(b[0])});
  else if(s==="v")l.sort(function(a,b){return b[2]-a[2]});
- $("vbody").innerHTML=l.length?l.map(function(c){var rc=RMAP[String(c[1]).toLowerCase()];return "<tr><td><div class='who'>"+im(c[0],c[0],"thumb")+"<strong>"+c[0]+"</strong></div></td><td><span class='pill'"+(rc?" style='background:"+rc[1]+";color:"+rc[2]+"'":"")+">"+(rc?rc[0]:c[1])+"</span></td><td>"+c[2]+"</td><td>"+c[3]+"</td><td class='"+c[4]+"'>"+(c[4]==="up"?"\u25b2 Rising":"\u25bc Falling")+"</td></tr>"}).join(""):"<tr><td colspan='5'>No characters match. Try a different search or rarity.</td></tr>";
+ $("vbody").innerHTML=l.length?l.map(function(c){var rc=RMAP[String(c[1]).toLowerCase()];return "<tr><td><div class='who'>"+im(c[0],c[0],"thumb")+"<strong>"+esc(c[0])+"</strong></div></td><td><span class='pill'"+(rc?" style='background:"+rc[1]+";color:"+rc[2]+"'":"")+">"+(rc?rc[0]:esc(String(c[1])))+"</span></td><td>"+Number(c[2]).toLocaleString("en-US")+"</td><td>"+c[3]+"</td><td class='"+c[4]+"'>"+(c[4]==="up"?"\u25b2 Rising":c[4]==="stable"?"\u25cf Stable":"\u25bc Falling")+"</td></tr>"}).join(""):"<tr><td colspan='5'>No characters match. Try a different search or rarity.</td></tr>";
 }
 function renderAds(){
  $("ads").innerHTML=ads.map(function(a){return "<div class='card ad'><strong>"+esc(a.n)+"</strong><div class='swap'><span class='chip'>"+esc(a.h)+"</span><span class='arrow'>⇄</span><span class='chip'>"+esc(a.w)+"</span></div></div>"}).join("");
@@ -233,7 +224,7 @@ function load(){try{var s=localStorage.getItem("abads");if(s){var p=JSON.parse(s
 function save(){try{localStorage.setItem("abads",JSON.stringify(ads))}catch(e){}}
 $("tpost").onclick=function(){
  var n=$("tn").value.trim(),h=$("th").value.trim(),w=$("tw").value.trim();
- if(!n||!h||!w){alert("Fill in your username, what you're offering and what you want.");return}
+ if(!n||!h||!w){alert("Fill in your username, what you’re offering and what you want.");return}
  ads.unshift({n:n,h:h,w:w});save();renderAds();$("th").value="";$("tw").value="";
 };
 ["vq","vr","vs"].forEach(function(i){$(i).addEventListener("input",renderValues)});
