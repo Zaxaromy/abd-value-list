@@ -158,25 +158,25 @@ footer{border-top:2px solid var(--ink);padding:24px 20px;text-align:center;color
    The Values page shows characters in the SAME ORDER as this list. */
 var CHARACTERS=[
 /* Exclusive */
-["Tozi","Exclusive",40000,"High","up"],
+["Tozi","Exclusive",40000,"Very High","up"],
 ["Kaniko Kakuja","Exclusive",20000,"High","up"],
-["Eskanor","Exclusive",19000,"High","up"],
+["Eskanor","Exclusive",19000,"Medium","down"],
 /* Limited */
-["Yuto","Limited",1600,"High","up"],
-["Mahyto","Limited",1600,"High","up"],
-["Alukard","Limited",1600,"High","up"],
-["Madoro","Limited",1600,"High","up"],
-["Grimjo","Limited",1600,"High","up"],
-["Kenjako","Limited",1600,"High","up"],
-["Muzon","Limited",1600,"High","up"],
-["Hakary","Limited",1600,"High","up"],
-["Daveed","Limited",1600,"High","up"],
-["Neferpito","Limited",1600,"High","up"],
+["Yuto","Limited",17000,"High","stable"],
+["Mahyto","Limited",12500,"High","stable"],
+["Alukard","Limited",12500,"High","up"],
+["Madoro","Limited",85000,"Very High","up"],
+["Grimjo","Limited",9000,"Medium","up"],
+["Kenjako","Limited",9500,"High","up"],
+["Muzon","Limited",10500,"Medium","up"],
+["Hakary","Limited",130000,"Very High","up"],
+["Daveed","Limited",115000,"Very High","up"],
+["Neferpito","Limited",7000,"Medium","stable"],
 /* Divine */
-["Loofy Gear 5","Divine",1300,"Medium","up"],
-["Guko Ultra Instinct","Divine",1300,"Medium","up"],
-["Nurato Six Paths","Divine",1300,"Medium","up"],
-["Ichiru Mugetsu","Divine",1300,"Medium","up"]
+["Loofy Gear 5","Divine",2500,"Medium","stable"],
+["Guko Ultra Instinct","Divine",3000,"Medium","stable"],
+["Nurato Six Paths","Divine",3000,"Medium","stable"],
+["Ichiru Mugetsu","Divine",3000,"Medium","stable"]
 /* Examples for other rarities (move above the closing bracket to use):
 ["Void Example","Void",1100,"Medium","stable"],
 ["Secret Example","Secret",1050,"Medium","up"],
